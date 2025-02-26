@@ -49,11 +49,11 @@ def scrape_website(url):
             scrape_website(href)
 
 
-@app.route('/scrape', methods=['GET'])
+@app.route('/')
 def scrape():
     global visited_links, extracted_emails, social_links
     
-    url = request.args.get('url')
+    url = "https://www.webuyestate.com/contact-us/"
     if not url:
         return jsonify({'error': 'يرجى إدخال رابط الموقع'}), 400
     
@@ -70,4 +70,4 @@ def scrape():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False,use_reloader=False)
